@@ -1,0 +1,13 @@
+# Standard markdown/git repo ignore for specs and open standards
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+.idea/
+.vscode/
+__pycache__/
+*.env
+node_modules/
+dist/
+build/
