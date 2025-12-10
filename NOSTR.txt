@@ -15,7 +15,7 @@ Version: v0.1
 Commit Hash: 92eda82957a40c499f235e2f4776bb7cfce4931e
 Repository: https://github.com/tech-hammer/protocol-ready-small-business
 Status: Draft Standard – Open for QA, Implementers, and Collaboration
-Date: 2025-01-XX
+Date: 2025-12-10
 
 SIGNING INSTRUCTIONS:
 Sign the following string using the TechHammer Nostr business identity key:
@@ -25,3 +25,24 @@ PRSB_v0.1_commit_92eda82957a40c499f235e2f4776bb7cfce4931e
 Then publish the signature + event on Nostr.
 
 ----- END PRSB RELEASE -----
+
+----- PRSB v0.1 NOSTR RELEASE METADATA -----
+
+Standard: Protocol-Ready Small Business (PRSB)
+Version: v0.1
+Repository: https://github.com/tech-hammer/protocol-ready-small-business
+Commit Hash: 92eda82957a40c499f235e2f4776bb7cfce4931e
+Release String:
+  PRSB_v0.1_commit_92eda82957a40c499f235e2f4776bb7cfce4931e
+
+Signing Identity (Nostr):
+  pubkey (hex): dddd21d61989c59677ea2e1a9996af47b9797303350b74b60a2e002b4f9e0de6
+
+Signature:
+  sig: 99531128c1bd672a4e1e47a7fd8ff2e966fac7e92ef01b1c81d8b6d6b9bce5aa6836e27030286175a8c6cc63dbecb6d1b7721df43656b1d5b7e1dfa795a016b5
+
+Verification:
+- Verifiers should check that this signature is a valid Ed25519 signature by the above pubkey over the release string.
+- This file plus releases/v0.1-signature.txt provide the provenance trail for PRSB v0.1.
+
+---------------------------------------------
