@@ -107,7 +107,7 @@ versioned form, including (as applicable):
 - security audit steps
 - vendor evaluation criteria
 
-PRSB does not define branding, marketing, onboarding funnels, or adoption playbooks.
+PRSB excludes marketing/growth and onboarding objectives; see `NON_GOALS.md`.
 Operational artifacts may be published or retained privately according to
 implementation constraints.
 
