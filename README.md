@@ -42,3 +42,4 @@ PRSB operates under a strict neutrality and non-alignment constraint. See `GOVER
 
 Specification stewardship and maintainer scope are defined in `GOVERNANCE/MAINTAINERS.md`.
 
+Explicit non-goals of the PRSB specification are documented in `NON_GOALS.md`.
