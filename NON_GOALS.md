@@ -23,6 +23,8 @@ PRSB does not measure success by usage, reach, or popularity.
 
 ## 2. Marketing, Branding, or Narrative
 
+PRSB does not define branding, marketing, onboarding funnels, or adoption playbooks.
+
 PRSB does not:
 - Define messaging, positioning, or storytelling
 - Provide marketing frameworks or playbooks

@@ -1,208 +1,160 @@
-# Protocol-Ready Small Business Standard (PRSB)
+# Protocol Ready Small Business (PRSB)
 ## Version 0.1 — Draft
 
----
+PRSB defines constraints and interfaces for representing business-relevant artifacts
+using sovereign, open protocols. PRSB is implementation-agnostic and does not
+prescribe business outcomes, adoption strategy, governance models, or reputation logic.
 
-## 1. PRINCIPLE
-
-A protocol-ready small business is one whose:
-- identity is sovereign (Nostr keys)
-- payments are sovereign (Bitcoin + Lightning)
-- discovery is portable and open (catalog schemas)
-- fulfillment is transparent and verifiable (signed artifacts)
-- operations are observable (SLA, resolution, delivery logs)
-- customer engagement includes contribution, not passive consumption
-- reputation is a first-class economic primitive
+See `NON_GOALS.md` for explicit exclusions.
 
 ---
 
-## 2. IDENTITY REQUIREMENTS
+## 1. Scope
 
-A business must:
-1. Generate a **dedicated business Nostr keypair**
-2. Securely back up the private key
-3. Use that key for:
-   - identity
+A “protocol-ready small business” (as used in this specification) is a business whose
+public-facing operational artifacts can be represented and verified using:
+- sovereign identity keys (e.g., Nostr-compatible keypairs or equivalent)
+- sovereign payment interfaces (e.g., Bitcoin/Lightning-compatible settlement)
+- portable discovery artifacts (e.g., open catalog schemas)
+- signed delivery and support artifacts (e.g., receipts, logs, and dispute records)
+
+PRSB defines artifact formats and conformance constraints. Any interpretation of these
+artifacts for trust, reputation, ranking, or recommendation is external to PRSB.
+
+---
+
+## 2. Identity Requirements
+
+A conforming implementation MUST support:
+1. A dedicated business signing key (public/private keypair).
+2. Secure key backup and key rotation procedures (implementation-defined).
+3. Use of the business key to sign business-relevant artifacts, including (as applicable):
    - announcements
-   - commit signatures
-   - release signatures
-   - verified provenance of deliverables
-4. Publish:
-   - business public key
-   - support channels (Nostr DMs)
-   - Lightning address
+   - catalog versions
+   - deliverable provenance records
+   - support and dispute artifacts
 
-Identity **must not** depend on:
-- Facebook groups
-- platform logins
-- closed CRM identity stores
+A conforming implementation MUST NOT require platform-controlled identity as the
+sole method of authentication or provenance.
 
 ---
 
-## 3. PAYMENT REQUIREMENTS
+## 3. Payment Interface Requirements
 
-A protocol-ready business must:
-- support Lightning invoices
-- support LNURL-pay
-- support static Lightning address for inbound microtransactions
-- maintain sats treasury allocation
-- support V4V (value-for-value) interactions
+A conforming implementation MUST support at least one sovereign settlement interface
+suitable for the business context (e.g., Lightning invoice, LNURL-pay, or equivalent).
 
-Payment **must not** depend on:
-- Stripe
-- PayPal
-- platform intermediaries
-- chargeback models
+Where payments are used, a conforming implementation SHOULD provide a verifiable
+payment reference artifact (implementation-defined) that can be associated with
+deliverables and/or dispute records.
 
-Settlement must be:
-- instant
-- final
-- peer-to-peer
+PRSB does not prescribe treasury policy, pricing, monetization, or performance claims
+(e.g., “instant” or “final” settlement guarantees).
 
 ---
 
-## 4. DISCOVERY REQUIREMENTS
+## 4. Discovery Requirements
 
-The business must publish **an open catalog** in machine-readable form:
+A conforming implementation MUST provide a portable, machine-readable catalog artifact
+for discovery and verification. At minimum, this SHOULD include:
+- a versioned catalog schema (e.g., JSON)
+- a stable retrieval mechanism (e.g., a publicly accessible endpoint or equivalent)
+- optional mirroring into protocol-native discovery channels (implementation-defined)
 
-- JSON catalog file
-- publicly accessible endpoint (self-hosted)
-- Nostr event mirroring for discovery
-- versioning and price transparency
-
-Discovery **must not** require:
-- Shopify
-- Amazon
-- Google Merchant
-- proprietary feed formats
-
-Because:
-> discovery becomes protocol-driven, not platform-driven.
+PRSB does not prescribe use of any specific commerce platform and does not require
+negative dependencies (“must not use X”) beyond the portability and verifiability
+constraints above.
 
 ---
 
-## 5. REPUTATION & TRANSPARENCY
+## 5. Transparency and Provenance Artifacts
 
-Fulfillment, support, and dispute logs must be:
-- timestamped
-- signed by the business key
-- tied to machine-readable SLA artifacts
-- partially or fully visible depending on privacy constraints
+A conforming implementation MUST support signed, timestamped artifacts for:
+- fulfillment / delivery evidence (where applicable)
+- support interactions (where applicable)
+- service terms or SLA representations (where applicable)
+- dispute records (where applicable)
 
-Each engagement must generate:
-- a signed “work artifact” documenting delivery
+Visibility of artifacts (public, private, selective disclosure) is implementation-defined
+and may be constrained by privacy, security, regulatory, or contractual requirements.
 
-Optional:
-- transparent SLA metrics
-- dispute resolution documents
-- satisfaction endorsements as zaps
-
-Reputation must be:
-- observable
-- cryptographically provable
-- portable between interfaces
-
-Reputation **must not** be:
-- testimonials controlled by the seller
-- ad-optimized reviews
-- manipulate-able identities
+PRSB does not define a global reputation system. Any reputation or trust signaling is
+external and derived from artifacts according to implementation-specific rules.
 
 ---
 
-## 6. PARTICIPATION REQUIREMENT
+## 6. Participation and Feedback (Optional)
 
-Customers must be able to:
-- participate in documentation
-- participate in QA
-- propose improvements
-- report UX friction
-- produce localization or templates
-- receive micro-payments for contributions
+A conforming implementation MAY support mechanisms for receiving structured feedback,
+including:
+- issue reports (e.g., UX friction)
+- documentation corrections
+- schema refinement proposals
+- localization or translation contributions
 
-Businesses must:
-- reward contributors using sats
-- treat community participation as a delivery input
-
-This converts customers into **co-creators**, not passive buyers.
+If contributor acknowledgment or compensation occurs, it is voluntary and external to
+PRSB. PRSB does not prescribe or guarantee payment, rewards, or incentive programs.
 
 ---
 
-## 7. OPERATIONS REQUIREMENTS
+## 7. Operations Artifacts
 
-Business processes must be:
-- versioned
-- documented
-- reproducible
-- minimally dependent on SaaS
-- sovereign where possible
-
-Artifacts include:
-- onboarding checklists
+A conforming implementation SHOULD document operational workflows in reproducible,
+versioned form, including (as applicable):
 - custody diagrams
 - support protocols
 - refund/dispute flows
 - security audit steps
 - vendor evaluation criteria
 
-Ops transparency is the **brand**, not persuasion.
+PRSB excludes marketing/growth and onboarding objectives; see `NON_GOALS.md`.
+Operational artifacts may be published or retained privately according to
+implementation constraints.
 
 ---
 
-## 8. DISPUTE MODEL
+## 8. Dispute Artifacts
 
-Disputes must:
-- produce a visible SLA artifact
-- show escalation steps
-- record refund path
-- be tied to Lightning settlement artifacts
-- be publicly or privately visible depending on sensitivity
+Where disputes are supported, a conforming implementation MUST represent disputes as
+signed records that MAY include:
+- escalation steps
+- refund path or remediation steps
+- payment reference linkage (where applicable)
+- visibility scope (public/private/selective)
 
-A dispute resolved successfully **increases reputation**, not risk.
-
----
-
-## 9. IMPLEMENTATION VALIDATION
-
-Every major clause in this standard must eventually be validated with:
-
-- at least one small business adopter
-- one transparency artifact
-- one end-to-end Lightning settlement
-- one onboarding example
-- one QA cycle
-- one dispute resolution example
-- real metrics
-
-Unvalidated clauses remain experimental.
+PRSB does not prescribe dispute resolution services, arbitration, escrow, or marketplace
+intermediation.
 
 ---
 
-## 10. VERSIONING & CHANGE MANAGEMENT
+## 9. Implementation Validation (Non-Normative)
 
-- All revisions are signed with the business key
-- Each version is announced on Nostr
-- Each change has:
-  - issue discussion
-  - implementation notes
-  - UX validation status
+For maturity, major clauses SHOULD be supported by at least one implementation example
+and associated evidence artifacts (e.g., catalog sample, signed deliverable record,
+support log, or dispute record).
 
-This ensures the **standard evolves with proof, not theory**.
+Unvalidated clauses may be marked as experimental.
 
 ---
 
-## 11. ECONOMIC OBJECTIVE
+## 10. Versioning and Change Management
 
-The business becomes a **sovereign node**, not a vendor:
+Specification changes SHOULD be tracked via:
+- issue discussion and rationale
+- versioned diffs
+- review notes
 
-- identity anchored by keys
-- discovery anchored by open catalog
-- competence anchored by transparency
-- revenue anchored by V4V micro-services
-- reputation anchored by observable artifacts
-- community anchored by participation
+Release announcements and signatures are implementation-defined. PRSB does not mandate
+any specific broadcast channel.
 
-The business no longer depends on:
-- platforms
-- ads
-- SaaS lock-in
-- third-party CRM identity
+---
+
+## 11. Out of Scope
+
+PRSB does not define:
+- marketplaces, hiring systems, or credentialing
+- global reputation metrics or social graphs
+- governance bodies, representation, or advocacy
+- marketing, growth, onboarding, or adoption strategies
+
+See `NON_GOALS.md` for additional exclusions.
