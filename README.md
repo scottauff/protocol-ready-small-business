@@ -37,3 +37,5 @@ All contributions are signed, timestamped, and rewarded using sats.
 
 ## How to Participate
 See CONTRIBUTING.md
+
+PRSB operates under a strict neutrality and non-alignment constraint. See `GOVERNANCE/NEUTRALITY.md`.
