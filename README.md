@@ -4,7 +4,7 @@ The **Protocol Ready Small Business (PRSB)** specification defines formal constr
 
 This repository contains the normative specification, related schemas, and reference documentation.
 
-PRSB does **not** prescribe business models, adoption strategies, marketplaces, credential systems, reputation systems, or community frameworks.
+PRSB does **not** prescribe business models, adoption objectives, marketplaces, credential systems, reputation systems, or community frameworks.
 
 ---
 
